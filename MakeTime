@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -Wall -pthread
+
+SRCS = LocalTime_Client.c NTP_Client.c
+OBJS = $(SRCS:.c=.o)
+TARGETS = LocalTime_Client NTP_Client
+
+all: $(TARGETS)
+
+LocalTime_Client: LocalTime_Client.o
+	$(CC) $(CFLAGS) LocalTime_Client.o -o LocalTime_Client
+
+NTP_Client: NTP_Client.o
+	$(CC) $(CFLAGS) NTP_Client.o -o NTP_Client
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $
